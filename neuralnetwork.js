@@ -94,7 +94,7 @@ const NeuralNetwork = (function() {
             let layers = [];
 
             for(let layer of data.layers) {
-                layers[i] = Layer.deserialize(layer);
+                layers[data.layers.indexOf(layer)] = Layer.deserialize(layer);
             }
 
             const neuralnetwork = NeuralNetwork.createNeuralNetwork({
