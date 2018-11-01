@@ -86,25 +86,25 @@ const NeuralNetwork = (function() {
         serialize() {
             return JSON.stringify(this);
         }
+    }
 
-        static deserialize(data) {
-            if(typeof data === 'string') {
-                data = JSON.parse(data);
-            }
-            let layers = [];
-
-            for(let layer of data.layers) {
-                layers[data.layers.indexOf(layer)] = Layer.deserialize(layer);
-            }
-
-            const neuralnetwork = NeuralNetwork.createNeuralNetwork({
-                inputNodes: data.inputNodes,
-                layers: layers,
-                learningRate: data.learningRate
-            });
-
-            return neuralnetwork;
+    function deserialize(data) {
+        if(typeof data === 'string') {
+            data = JSON.parse(data);
         }
+        let layers = [];
+
+        for(let layer of data.layers) {
+            layers[data.layers.indexOf(layer)] = Layer.deserialize(layer);
+        }
+
+        const neuralnetwork = NeuralNetwork.createNeuralNetwork({
+            inputNodes: data.inputNodes,
+            layers: layers,
+            learningRate: data.learningRate
+        });
+
+        return neuralnetwork;
     }
 
     class Layer {
@@ -163,7 +163,8 @@ const NeuralNetwork = (function() {
 
     return {
         createNeuralNetwork,
-        createLayer
+        createLayer,
+        deserialize
     };
 
 })();

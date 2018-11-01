@@ -5,7 +5,7 @@ This is a multi-layer neural network library created in pure JavaScript. (still 
 ## Usage:
 
 ### Layer creation:
-```
+```js
 const layer = NeuralNetwork.createLayer({
     nodes: 2,
     activation: 'sigmoid'
@@ -13,7 +13,7 @@ const layer = NeuralNetwork.createLayer({
 ```
 
 ### Neural Network initialization:
-```
+```js
 const brain = NeuralNetwork.createNeuralNetwork({
     inputNodes: 2,
     layers: [
@@ -31,7 +31,7 @@ const brain = NeuralNetwork.createNeuralNetwork({
 ```
 
 ### Training:
-```
+```js
 const dataset = [
     {
         inputs: [0, 1],
@@ -59,7 +59,7 @@ for(let i = 0; i < 10000; i++) { // how many times we want it to be trained
 ```
 
 ### Predicting:
-```
+```js
 const output = brain.predict([0, 1]);
 console.log(output);
 ```
