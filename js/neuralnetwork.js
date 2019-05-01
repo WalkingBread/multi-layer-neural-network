@@ -34,18 +34,7 @@ const NeuralNetwork = (function() {
 
         train(inputArray, targetArray) {
             const inputs = Matrix.from_arr(inputArray);
-
-            let prevLayerValues = inputs;
-
-            for(let layer of this.layers) {
-                layer.layerValues = Matrix.multiply(layer.weights, prevLayerValues);
-                layer.layerValues.add(layer.bias);
-                layer.layerValues.map(layer.activationFunction.func);
-
-                prevLayerValues = layer.layerValues;
-            }
-
-            const outputs = this.layers[this.layers.length - 1].layerValues;
+            const outputs = this.predict(inputArray);
             const targets = Matrix.from_arr(targetArray);
 
             let prevError = null;
